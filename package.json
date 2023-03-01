@@ -1,0 +1,38 @@
+{
+  "name": "bypass-cors",
+  "version": "1.0.0",
+  "description": "Proxy requests to bypass CORS restrictions",
+  "main": "./bin/index.js",
+  "bin": {
+    "bypass-cors": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "./bin/index.js"
+  ],
+  "keywords": [
+    "cors",
+    "proxy",
+    "server",
+    "middleware",
+    "security"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/awaismirza/bypass-cors.git"
+  },
+  "bugs": "https://github.com/awaismirza/bypass-cors/issues",
+  "author": {
+    "name": "Awais Jamil",
+    "url": "https://github.com/awaismirza"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cors": "^8.2.0",
+    "@fastify/reply-from": "^8.4.3",
+    "fastify": "^4.13.0",
+    "readline-sync": "^1.4.10"
+  }
+}
