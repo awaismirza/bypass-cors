@@ -8,7 +8,9 @@ const fastify = require('fastify')({
 const cors = require('@fastify/cors');
 
 const proxy = require('@fastify/reply-from');
-const readline = require("readline");
+const readline = require("readline-sync");
+const argv = require('process').argv;
+
 
 fastify.register(cors, {origin: '*'});
 
@@ -49,29 +51,45 @@ function ask(question) {
 /**
  * Run the server!
  */ function start() {
-    const baseUrlAnswer = ask('Enter base Url for Target API: ')
-    if (!baseUrlAnswer) {
-        throw new Error('Please enter a valid base url')
+    let portEnv;
+    let baseEvn;
+    let baseUrlAnswer;
+    let basePortAnswer;
+    argv.forEach((val, index) => {
+        if (index === 2) {
+            baseEvn = val;
+        }
+        if (index === 3) {
+            portEnv = val;
+        }
+    });
+    if (!baseEvn) {
+        baseUrlAnswer = ask('Enter base Url for Target API: ')
+        if (!baseUrlAnswer) {
+            throw new Error('Please enter a valid base url')
+        }
+        baseEvn = baseUrlAnswer
     }
-    const portAnswer = ask('Enter port for Target API: (Default: 3000)')
+
+    if (!portEnv) {
+        basePortAnswer = ask('Enter port for Target API: (Default: 3000)')
+        if (basePortAnswer.length === 0) {
+            basePortAnswer = 3000
+        }
+        portEnv = basePortAnswer
+        console.log(`Base Url is set to:, ${basePortAnswer}`);
+    }
+
+    fastify.register(proxy, {
+        base: baseEvn,
+    });
     try {
-        let port = 3000
-        if (portAnswer.length > 0) {
-            port = portAnswer
-        }
-        if (baseUrlAnswer) {
-            console.log(`Base Url is set to:, ${baseUrlAnswer}!`);
-            fastify.register(proxy, {
-                base: baseUrlAnswer,
-            });
-        }
-        fastify.listen({port: port}).then(r =>
+        fastify.listen({port: portEnv}).then(r =>
             fastify.log.info(`Server listening on ${fastify.server.address().port}`)
         );
     } catch (e) {
         fastify.log.error(e)
     }
-
 }
 
 start()
