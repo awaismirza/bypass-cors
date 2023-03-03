@@ -52,3 +52,5 @@ Bypass CORS supports the following options:
 To contribute to Bypass CORS, you'll need to have [Node.js](https://nodejs.org/) installed on your system. Once you have
 Node.js installed, you can install the dependencies and run the tests using the following commands:
 
+### Bye me a Coffee: https://paypal.me/tipawais ###
+
