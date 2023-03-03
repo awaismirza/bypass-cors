@@ -17,17 +17,25 @@ npm install -g @awaismirza/bypass-cors
 ### Run without installing
 
 ```npm
-npx @awaismirza/bypass-cors
+npx @awaismirza/bypass-cors <base_url> <port>
 ```
 
 ## Usage
 
+```sh
+bypass-cors <base-url> <port>
+```
+
 To use Bypass CORS, you can run the following command:
 
-The `base-url` argument is the URL of the API you want to access. For example, if you wanted to access the following
-API:
+The `base-url` argument is the URL of the API you want to access. 
+The `port` argument is the port for your localhost proxy server ( Defaults: 3000 )
 
-You would run the following command: `bypass-cors`
+For example, if you wanted to access the following API:
+
+https://jsonplaceholder.typicode.com
+
+You would run the following command: `bypass-cors https://jsonplaceholder.typicode.com 3000` override port defaults to : 3000
 
 This will start the Bypass CORS proxy server and proxy requests to the specified URL. You can then access the API from
 your browser or other applications without running into CORS issues.
