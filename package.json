@@ -1,6 +1,6 @@
 {
   "name": "@awaismirza/bypass-cors",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Bypass CORS is a Node.js application that creates a proxy server to bypass Cross-Origin Resource Sharing (CORS) issues. It allows you to make cross-origin requests to APIs that would otherwise be blocked by the browser's same-origin policy.",
   "main": "./bin/index.js",
   "bin": {
@@ -30,9 +30,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fastify/cors": "^8.2.0",
-    "@fastify/reply-from": "^8.4.3",
-    "fastify": "^4.13.0",
-    "readline-sync": "^1.4.10"
+    "@fastify/cors": "^11.2.0",
+    "@fastify/reply-from": "^12.6.2",
+    "fastify": "5.8.5",
+    "readline-sync": "1.4.10"
   }
 }
